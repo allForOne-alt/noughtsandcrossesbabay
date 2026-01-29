@@ -10,7 +10,7 @@ def draw_board(board):
     for i in range(3):
         print(f"{board[i][0]} | {board[i][1]} | {board[i][2]} ")
         if i < 2:
-            print("---------------")
+            print("-------------")
     print("\n")
 
 
@@ -144,25 +144,23 @@ def play_game(board):
 
 
 def menu():
-    # get user input of either '1', '2', '3' or 'q'
+    # get user input of either '1', '2' or 'q'
     # 1 - Play the game
-    # 2 - Save score in file 'leaderboard.txt'
-    # 3 - Load and display the scores from the 'leaderboard.txt'
+    # 2 - Load and display the scores from the 'leaderboard.txt'
     # q - End the program
 
     while True:
         print()
         print("1 - Play the game")
-        print("2 - Save score")
-        print("3 - Load and display the scores")
+        print("2 - Load and display the scores")
         print("q - End the program")
         choice = input("Enter you choice : ").lower()
         print()
 
-        if choice in ["1", "2", "3", "q"]:
+        if choice in ["1", "2", "q"]:
             return choice
         else:
-            print("Invalid choice, 1, 2, 3, or q to quit")
+            print("Invalid choice, 1, 2, or q to quit")
 
 
 def load_scores():
@@ -196,8 +194,11 @@ def save_score(score, name=None):
     else:
         leaders[name] = score
 
-    with open("leaderboard.txt", "w") as file:
-        json.dump(leaders, file)
+    try:
+        with open("leaderboard.txt", "w") as file:
+            json.dump(leaders, file)
+    except IOError:
+        print("Error saving score, unable to open the file")
 
 
 def display_leaderboard(leaders):
