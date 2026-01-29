@@ -181,10 +181,12 @@ def load_scores():
     return leaders
 
 
-def save_score(score):
+def save_score(score, name=None):
     # develop code to ask the player for their name
     # and then save the current score to the file 'leaderboard.txt'
-    name = input("Enter you name : ")
+    if name is None:
+        name = input("Enter you name : ")
+    
     leaders = load_scores()
 
     if name in leaders:
@@ -194,7 +196,6 @@ def save_score(score):
 
     with open("leaderboard.txt", "w") as file:
         json.dump(leaders, file)
-
 
 def display_leaderboard(leaders):
     """
@@ -220,3 +221,4 @@ def display_leaderboard(leaders):
     for name, score in score_list:
         print(f"{name}: {score}")
     print()
+
