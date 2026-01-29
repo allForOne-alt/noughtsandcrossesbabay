@@ -151,11 +151,13 @@ def menu():
     # q - End the program
 
     while True:
+        print()
         print("1 - Play the game")
         print("2 - Save score")
         print("3 - Load and display the scores")
         print("q - End the program")
         choice = input("Enter you choice : ").lower()
+        print()
 
         if choice in ["1", "2", "3", "q"]:
             return choice
@@ -185,8 +187,8 @@ def save_score(score, name=None):
     # develop code to ask the player for their name
     # and then save the current score to the file 'leaderboard.txt'
     if name is None:
-        name = input("Enter you name : ")
-    
+        name = input("Enter your name : ")
+
     leaders = load_scores()
 
     if name in leaders:
@@ -196,6 +198,7 @@ def save_score(score, name=None):
 
     with open("leaderboard.txt", "w") as file:
         json.dump(leaders, file)
+
 
 def display_leaderboard(leaders):
     """
@@ -214,12 +217,9 @@ def display_leaderboard(leaders):
         for j in range(i + 1, len(score_list)):
             if score_list[j][1] > score_list[max_i][1]:
                 max_i = j
-
         score_list[i], score_list[max_i] = score_list[max_i], score_list[i]
 
     print("-------------LEADER-BOARD----------------")
     for name, score in score_list:
         print(f"{name}: {score}")
     print()
-
-
