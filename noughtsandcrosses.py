@@ -213,7 +213,7 @@ def display_leaderboard(leaders):
         max_i = i  # assuming that i has the highest score
         for j in range(i + 1, len(score_list)):
             if score_list[j][1] > score_list[max_i][1]:
-                max_i
+                max_i = j
 
         score_list[i], score_list[max_i] = score_list[max_i], score_list[i]
 
@@ -221,4 +221,5 @@ def display_leaderboard(leaders):
     for name, score in score_list:
         print(f"{name}: {score}")
     print()
+
 
