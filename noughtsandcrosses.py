@@ -115,6 +115,7 @@ def play_game(board):
 
     while True:
         # player
+        print("Your Turn")
         row, col = get_player_move(board)
         board[row][col] = "x"
         draw_board(board)
@@ -128,21 +129,10 @@ def play_game(board):
             return 0
 
         # computer
+        print("Computer's Turn")
         row, col = choose_computer_move(board)
         board[row][col] = "0"
-        positions = {
-            1: (0, 0),
-            2: (0, 1),
-            3: (0, 2),
-            4: (1, 0),
-            5: (1, 1),
-            6: (1, 2),
-            7: (2, 0),
-            8: (2, 1),
-            9: (2, 2),
-        }
-        computer_pos = positions[(row, col)]
-        print(f"computer chose : {computer_pos}")
+        draw_board(board)
 
         if check_for_win(board, "0"):
             print("COMPUTER WON!!!")
