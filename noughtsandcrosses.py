@@ -176,7 +176,7 @@ def load_scores():
         try:
             with open("leaderboard.txt", "r") as file:
                 leaders = json.load(file)
-        except IOError:
+        except (IOError, json.JSONDecodeError):
             leaders = {}
     return leaders
 
