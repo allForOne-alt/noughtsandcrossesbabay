@@ -5,7 +5,6 @@ def main():
     board = [["1", "2", "3"], ["4", "5", "6"], ["7", "8", "9"]]
 
     welcome(board)
-    total_score = 0
     while True:
         choice = menu()
         if choice == "1":
@@ -14,9 +13,9 @@ def main():
                 save_score(1)
             elif score == -1:
                 save_score(1, "Computer")
+        # if choice == "2":
+        # save_score()
         if choice == "2":
-            save_score(total_score)
-        if choice == "3":
             leader_board = load_scores()
             display_leaderboard(leader_board)
         if choice == "q":
